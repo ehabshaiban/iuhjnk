@@ -1,0 +1,15 @@
+/* COOKIES LINO — extracted from the supplied monolithic HTML */
+@use 'styles/01-settings/global';
+@use 'styles/01-settings/tailwind';
+@use 'styles/02-generic/common';
+@use 'styles/02-generic/animations';
+@use 'styles/02-generic/lazyload';
+@use 'styles/02-generic/ltr';
+@use 'styles/02-generic/rtl';
+@use 'styles/02-generic/tooltip';
+@use 'styles/03-elements/product-card';
+@use 'styles/03-elements/testimonials';
+@use 'styles/04-components/footer';
+@use 'styles/04-components/gifting';
+@use 'styles/04-components/slider';
+@use 'styles/05-utilities/motion';

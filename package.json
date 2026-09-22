@@ -1,9 +1,530 @@
 {
-  "name": "shadpo-master",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "build": "webpack",
-    "dev": "webpack --mode development"
+  "name": {
+    "ar": "كوكيز لينو",
+    "en": "Cookies Lino"
+  },
+  "repository": "https://github.com/cookies-lino/salla-theme",
+  "author_email": "hello@cookieslino.com",
+  "features": [
+    "mega-menu",
+    "fonts",
+    "color",
+    "breadcrumb",
+    "unite-cards-height",
+    "component-featured-products",
+    "component-fixed-banner",
+    "component-fixed-products",
+    "component-products-slider",
+    "component-photos-slider",
+    "component-parallax-background",
+    "component-testimonials",
+    "component-square-photos",
+    "component-store-features",
+    "component-youtube",
+    "menu-images",
+    "filters",
+    "dark-mode",
+    "countdown",
+    "gift-boxes"
+  ],
+  "settings": [
+    {
+      "type": "static",
+      "format": "title",
+      "id": "static-general-title",
+      "value": "<div class='rounded-lg'><h6>الإعدادات العامة والألوان</h6></div>",
+      "variant": "h6"
+    },
+    {
+      "id": "primary_color",
+      "type": "string",
+      "format": "color",
+      "label": "اللون الأساسي (تيراكوتا)",
+      "description": "يُستخدم في الأزرار الرئيسية والشارات.",
+      "value": "#B4552D"
+    },
+    {
+      "id": "secondary_color",
+      "type": "string",
+      "format": "color",
+      "label": "اللون الثانوي (شوكولاتة)",
+      "description": "يُستخدم في الهيدر والفوتر والنصوص الداكنة.",
+      "value": "#3B2314"
+    },
+    {
+      "id": "accent_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون التمييز (كريمر)",
+      "description": "يُستخدم في الخلفيات الفاتحة والحدود.",
+      "value": "#F2E4C8"
+    },
+    {
+      "id": "font_family",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "نوع الخط",
+      "icon": "sicon-typography",
+      "options": [
+        { "label": "Almarai", "value": "Almarai" },
+        { "label": "Tajawal", "value": "Tajawal" },
+        { "label": "Cairo", "value": "Cairo" },
+        { "label": "IBM Plex Sans Arabic", "value": "IBM Plex Sans Arabic" }
+      ],
+      "value": "Almarai"
+    },
+    {
+      "type": "static",
+      "id": "static-line-header",
+      "format": "line"
+    },
+    {
+      "type": "static",
+      "format": "title",
+      "id": "static-header-title",
+      "value": "<div class='rounded-lg'><h6>خيارات أعلى الصفحة (الهيدر)</h6></div>",
+      "variant": "h6"
+    },
+    {
+      "id": "header_is_sticky",
+      "label": "تثبيت الهيدر عند التمرير لأسفل",
+      "description": "يُبقى الهيدر ظاهرًا أعلى الشاشة عند تصفح المتجر.",
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "format": "switch",
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "announcement_bar_enabled",
+      "label": "إظهار شريط الإعلانات العلوي (Marquee)",
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "format": "switch",
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "announcement_text",
+      "type": "string",
+      "format": "text",
+      "label": "نص الإعلان المتحرك",
+      "value": "🍪 مخبوز طازج يوميًا | شحن مجاني للطلبات فوق 149 ر.س | شوكولاتة بلجيكية فاخرة",
+      "conditions": [
+        { "id": "announcement_bar_enabled", "operation": "=", "value": true }
+      ]
+    },
+    {
+      "id": "dark_mode_switcher",
+      "label": "إظهار زر تبديل الوضع الليلي",
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "format": "switch",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "static",
+      "id": "static-line-footer",
+      "format": "line"
+    },
+    {
+      "type": "static",
+      "format": "title",
+      "id": "static-footer-title",
+      "value": "<div class='rounded-lg'><h6>خيارات أسفل الصفحة (الفوتر)</h6></div>",
+      "variant": "h6"
+    },
+    {
+      "id": "footer_is_dark",
+      "label": "تفعيل الوضع الداكن للفوتر",
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "format": "switch",
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "footer_about_text",
+      "type": "string",
+      "format": "textarea",
+      "label": "نبذة عن المتجر في الفوتر",
+      "value": "مخبز حرفي متخصص بالكوكيز الفاخر. نخبز يوميًا بمكونات حقيقية، ونوصل الفرح إلى بابك."
+    },
+    {
+      "id": "whatsapp_number",
+      "type": "string",
+      "format": "text",
+      "label": "رقم الواتساب (للطلبات المخصصة والدعم)",
+      "placeholder": "966500000000",
+      "value": "966500000000"
+    },
+    {
+      "type": "static",
+      "id": "static-line-product",
+      "format": "line"
+    },
+    {
+      "type": "static",
+      "format": "title",
+      "id": "static-product-title",
+      "value": "<div class='rounded-lg'><h6>خيارات بطاقة المنتج والسلة</h6></div>",
+      "variant": "h6"
+    },
+    {
+      "id": "show_rating",
+      "label": "إظهار التقييمات على بطاقات المنتجات",
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "format": "switch",
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "show_badges",
+      "label": "إظهار الشارات (جديد، الأكثر مبيعًا، إصدار محدود)",
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "format": "switch",
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "enable_add_product_toast",
+      "label": "تفعيل إشعار الإضافة للسلة المحسن (Toast)",
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "format": "switch",
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "open_drawer_on_add",
+      "label": "فتح السلة الجانبية تلقائيًا عند إضافة منتج",
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "format": "switch",
+      "value": true,
+      "selected": true
+    }
+  ],
+  "components": [
+    {
+      "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "title": {
+        "ar": "القسم الرئيسي (Hero)",
+        "en": "Hero Section"
+      },
+      "icon": "sicon-image-carousel",
+      "path": "home.hero-section",
+      "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=1200&auto=format&fit=crop",
+      "is_default": true,
+      "fields": [
+        {
+          "type": "static",
+          "format": "description",
+          "id": "hero-desc",
+          "value": "<div class='p-3 bg-gray-100 rounded'>هذا القسم مصمم بأسلوب تحريري (Editorial Split) لعرض صورة الكوكيز بجوار النص الترويجي.</div>"
+        },
+        {
+          "id": "hero_image",
+          "type": "string",
+          "format": "image",
+          "label": "صورة الهيرو الرئيسية",
+          "value": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=1000&auto=format&fit=crop",
+          "required": true
+        },
+        {
+          "id": "hero_title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان الرئيسي",
+          "multilanguage": true,
+          "value": "كوكيز حرفي فاخر، بشوكولاتة حقيقية",
+          "required": true
+        },
+        {
+          "id": "hero_subtitle",
+          "type": "string",
+          "format": "textarea",
+          "label": "الوصف",
+          "multilanguage": true,
+          "value": "في كوكيز لينو نخبز كل قطعة يدويًا كل صباح: زبدة فرنسية، شوكولاتة بلجيكية 54%، ووصفات صقلناها على مدى سنوات."
+        },
+        {
+          "id": "hero_btn_text",
+          "type": "string",
+          "format": "text",
+          "label": "نص الزر الأول",
+          "multilanguage": true,
+          "value": "تسوّق الآن"
+        },
+        {
+          "id": "hero_btn_link",
+          "type": "items",
+          "format": "variable-list",
+          "label": "رابط الزر الأول",
+          "source": "custom",
+          "sources": [
+            { "label": "تصنيف", "key": "categories", "value": "categories" },
+            { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "title": {
+        "ar": "شبكة التصنيفات الدائرية",
+        "en": "Categories Grid"
+      },
+      "icon": "sicon-layout-grid-rearrange",
+      "path": "home.categories-grid",
+      "image": "https://images.unsplash.com/photo-1548907040-4baa42d10919?q=80&w=1200&auto=format&fit=crop",
+      "is_default": true,
+      "fields": [
+        {
+          "id": "section_title",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان القسم",
+          "multilanguage": true,
+          "value": "اختر مذاقك المفضل"
+        },
+        {
+          "id": "categories",
+          "type": "items",
+          "format": "dropdown-list",
+          "label": "حدد التصنيفات",
+          "icon": "sicon-keyboard_arrow_down",
+          "source": "categories",
+          "multichoice": true,
+          "searchable": true,
+          "required": true
+        }
+      ]
+    },
+    {
+      "key": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "title": {
+        "ar": "الأكثر مبيعًا (سلايدر)",
+        "en": "Best Sellers Slider"
+      },
+      "icon": "sicon-list-play",
+      "path": "home.best-sellers",
+      "image": "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=1200&auto=format&fit=crop",
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان القسم",
+          "multilanguage": true,
+          "value": "يعشقها الجميع"
+        },
+        {
+          "id": "products",
+          "type": "items",
+          "format": "dropdown-list",
+          "label": "منتجات محددة (اختياري)",
+          "source": "products",
+          "multichoice": true,
+          "searchable": true,
+          "description": "اتركه فارغًا لجلب الأكثر مبيعًا تلقائيًا."
+        }
+      ]
+    },
+    {
+      "key": "d4e5f6a7-b8c9-0123-defa-234567890123",
+      "title": {
+        "ar": "قصتنا (من الفرن إلى الطاولة)",
+        "en": "Our Story"
+      },
+      "icon": "sicon-info-circle",
+      "path": "home.story-section",
+      "image": "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?q=80&w=1200&auto=format&fit=crop",
+      "fields": [
+        {
+          "id": "story_image",
+          "type": "string",
+          "format": "image",
+          "label": "صورة القصة",
+          "value": "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?q=80&w=800&auto=format&fit=crop"
+        },
+        {
+          "id": "story_title",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان القصة",
+          "multilanguage": true,
+          "value": "من فرننا إلى طاولتك"
+        },
+        {
+          "id": "story_text",
+          "type": "string",
+          "format": "textarea",
+          "label": "نص القصة",
+          "multilanguage": true,
+          "value": "بدأت حكاية لينو من مطبخ صغير وشغف كبير. اليوم نخبز آلاف القطع يوميًا بنفس الوصفة الأولى: مكونات صادقة، يدٌ صبورة، ولا اختصارات."
+        }
+      ]
+    },
+    {
+      "key": "e5f6a7b8-c9d0-1234-efab-345678901234",
+      "title": {
+        "ar": "بوكسات الهدايا",
+        "en": "Gift Boxes"
+      },
+      "icon": "sicon-packed-box",
+      "path": "home.gift-boxes",
+      "image": "https://images.unsplash.com/photo-1611625618313-68b87aaa0626?q=80&w=1200&auto=format&fit=crop",
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "multilanguage": true,
+          "value": "أهدِ لحظة حلوة"
+        },
+        {
+          "id": "subtitle",
+          "type": "string",
+          "format": "textarea",
+          "label": "الوصف",
+          "multilanguage": true,
+          "value": "بوكسات مصممة للمناسبات والشركات، بتغليف فاخر وبطاقة إهداء مجانية."
+        },
+        {
+          "id": "whatsapp_cta",
+          "type": "string",
+          "format": "text",
+          "label": "نص زر التواصل (واتساب)",
+          "multilanguage": true,
+          "value": "تواصل عبر واتساب"
+        }
+      ]
+    },
+    {
+      "key": "f6a7b8c9-d0e1-2345-fabc-456789012345",
+      "title": {
+        "ar": "عرض العد التنازلي",
+        "en": "Countdown Offer"
+      },
+      "icon": "sicon-calendar-date",
+      "path": "home.countdown-offer",
+      "image": "https://images.unsplash.com/photo-1587080413959-06b859fb107d?q=80&w=1200&auto=format&fit=crop",
+      "fields": [
+        {
+          "id": "offer_title",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان العرض",
+          "multilanguage": true,
+          "value": "خصم 20% على جميع البوكسات"
+        },
+        {
+          "id": "offer_description",
+          "type": "string",
+          "format": "textarea",
+          "label": "وصف العرض",
+          "multilanguage": true,
+          "value": "العرض ساري حتى نفاد الكمية — استخدم كود LINO20 عند إتمام الطلب."
+        },
+        {
+          "id": "countdown_date",
+          "type": "string",
+          "format": "text",
+          "label": "تاريخ انتهاء العرض",
+          "placeholder": "MM-DD-YYYY, HH:MM:SS am/pm",
+          "value": "12-31-2026,11:59:59 pm"
+        }
+      ]
+    },
+    {
+      "key": "a7b8c9d0-e1f2-3456-abcd-567890123456",
+      "title": {
+        "ar": "الأسئلة الشائعة",
+        "en": "FAQ"
+      },
+      "icon": "sicon-chat-bubbles",
+      "path": "home.faq",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/faq.png",
+      "fields": [
+        {
+          "id": "faq_title",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان القسم",
+          "multilanguage": true,
+          "value": "لديك سؤال؟ الإجابة هنا 👇"
+        }
+      ]
+    },
+    {
+      "key": "b8c9d0e1-f2a3-4567-bcde-678901234567",
+      "title": {
+        "ar": "آراء العملاء",
+        "en": "Testimonials"
+      },
+      "icon": "sicon-star2",
+      "path": "home.testimonials",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/custom-testimonials.png",
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "multilanguage": true,
+          "value": "قالوا عن لينو"
+        },
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "label": "التقييمات",
+          "item_label": "التقييم",
+          "icon": "sicon-list-add",
+          "minLength": 1,
+          "maxLength": 10,
+          "fields": [
+            {
+              "id": "items.name",
+              "type": "string",
+              "format": "text",
+              "label": "اسم العميل"
+            },
+            {
+              "id": "items.avatar",
+              "type": "string",
+              "format": "image",
+              "label": "صورة العميل"
+            },
+            {
+              "id": "items.stars",
+              "type": "number",
+              "format": "integer",
+              "label": "عدد النجوم",
+              "minimum": 1,
+              "maximum": 5,
+              "value": 5
+            },
+            {
+              "id": "items.text",
+              "type": "string",
+              "format": "textarea",
+              "label": "نص التقييم",
+              "multilanguage": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "support_url": null,
+  "description": {
+    "ar": "ثيم فاخر ومتخصص لمتاجر الكوكيز والحلويات، مصمم بعناية ليعكس جودة المنتج ودفء المخبز الحرفي مع دعم كامل للوضع الليلي وتجربة جوال متقدمة.",
+    "en": "A premium theme specialized for cookie and sweets stores, carefully designed to reflect product quality and artisan bakery warmth with full dark mode and advanced mobile experience."
   }
 }
